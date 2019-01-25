@@ -17,3 +17,7 @@ Route::get('/', function () {
 
 Route::get('/hello/', 'Hello@show');
 
+Route::get('/layout', function () {
+    return view('layout');
+});
+
