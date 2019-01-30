@@ -21,3 +21,7 @@ Route::get('/layout', function () {
     return view('layout');
 });
 
+Route::get('/CardBoard', function () {
+    return view('/CardBoard/homeweb');
+});
+
