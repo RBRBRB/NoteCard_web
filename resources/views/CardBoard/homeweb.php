@@ -1,21 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta http-equiv="content-type" content="text/html" charset="utf-8" />
 		<title>editmodeweb</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 		<meta name="description" content="" >
-		<link href="css/editmodeweb.css" rel="StyleSheet" />
-		<script src="https://secure.exportkit.com/cdn/js/ek_googlefonts.js"></script>
+		<!--<link href="css/editmodeweb.css" rel="StyleSheet" /> -->
+
 		<!-- Add your custom HEAD content here -->
+		<!-- has bug
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+		-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/paper/bootstrap.min.css" />
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	  <link rel="stylesheet" href="https://cdn.rawgit.com/mladenplavsic/bootstrap-navbar-sidebar/3bd282bd/docs/navbar-fixed-right.min.css">
+	  <link rel="stylesheet" href="https://cdn.rawgit.com/mladenplavsic/bootstrap-navbar-sidebar/3bd282bd/docs/navbar-fixed-left.min.css">
+	  <link rel="stylesheet" href="https://cdn.rawgit.com/mladenplavsic/bootstrap-navbar-sidebar/3bd282bd/docs/docs.css">
+
+		<link rel="stylesheet" href="css/CardBoard/HomePage.css">
+
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	  <script src="https://cdn.rawgit.com/mladenplavsic/bootstrap-navbar-sidebar/3bd282bd/docs/docs.js"></script>
+	  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+		<script src="js/CardBoard/Animation.js"></script>
 
 	</head>
 	<body>
 		<div id="content-container" >
 
+			<nav class="navbar navbar-inverse navbar-fixed-left">
+		    <div class="container">
+		      <div class="navbar-header">
+		        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+		          <span class="sr-only">Toggle navigation</span>
+		          <span class="icon-bar"></span>
+		          <span class="icon-bar"></span>
+		          <span class="icon-bar"></span>
+		        </button>
+		        <a class="navbar-brand" href="#">Project name</a>
+		      </div>
+		      <div id="navbar" class="navbar-collapse collapse">
+		        <ul class="nav navbar-nav">
+		          <li><a href="#">Home</a></li>
+		          <li><a href="#">About</a></li>
+		          <li><a href="#">Contact</a></li>
+		          <li class="dropdown">
+		            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+		            <ul class="dropdown-menu">
+		              <li><a href="#">Action</a></li>
+		              <li><a href="#">Another action</a></li>
 
+		              <li role="separator" class="divider"></li>
+		              <li class="dropdown-header">Nav header</li>
+		              <li><a href="#">Separated link</a></li>
 
+		            </ul>
+		          </li>
+		        </ul>
+		        <ul class="nav navbar-nav navbar-right">
+		          <li>
+		            <a data-class="navbar-fixed-left">
+		              <i class="fa fa-arrow-left"></i>
+		              Fixed Left
+		            </a>
+		          </li>
+		          <li>
+		            <a data-class="navbar-fixed-right">
+		              <i class="fa fa-arrow-right"></i>
+		              Fixed Right
+		            </a>
+		          </li>
+		        </ul>
+		      </div>
+		    </div>
+		  </nav>
 
+			<button class="btn-nav">
+			  <div class="bar arrow-top-r"></div>
+			  <div class="bar arrow-middle-r"></div>
+			  <div class="bar arrow-bottom-r"></div>
+			</button>
+
+			<div class="nav-container hidden hideNav">
+
+			  <ul class="nav-list">
+			    <li class="list-item"><a href=""><i class="fa fa-gift"></i></a></li>
+			    <li class="list-item"><a href=""><i class="fa fa-moon-o"></i></a></li>
+			    <li class="list-item"><a href=""><i class="fa fa-star"></i></a></li>
+			    <li class="list-item"><a href=""><i class="fa fa-truck"></i></a></li>
+			    <li class="list-item"><a href=""><i class="fa fa-umbrella"></i></a></li>
+			  </ul>
+			</div>
+
+			<a href="https://codepen.io/tonkec" class="ua" target="_blank">
+			<i class="fa fa-user"></i></a>
+<!--
 			<div id="page_homeweb_ek1"  >
 				<div id="_bg__homeweb_ek2"  ></div>
 
@@ -151,7 +231,10 @@
 
 				</div>
 
-			</div>
+			</div>-->
 		</div>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 	</body>
 </html>
