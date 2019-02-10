@@ -25,6 +25,7 @@ html,
 
  .btn-nav:hover {
    cursor: pointer;
+   
  }
 
  .btn-nav:hover .bar {
@@ -257,10 +258,11 @@ html,
    -moz-animation: hideNav 1s ease forwards;
    -o-animation: hideNav 1s ease forwards;
    animation: hideNav 1s ease forwards;
+   background: #2E282A;
  }
 
  .hidden {
-   display: none;
+   
  }
 
 .ua {

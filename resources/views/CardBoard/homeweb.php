@@ -17,31 +17,36 @@
 	  <link rel="stylesheet" href="https://cdn.rawgit.com/mladenplavsic/bootstrap-navbar-sidebar/3bd282bd/docs/navbar-fixed-left.min.css">
 	  <link rel="stylesheet" href="https://cdn.rawgit.com/mladenplavsic/bootstrap-navbar-sidebar/3bd282bd/docs/docs.css">
 
-		<link rel="stylesheet" href="css/CardBoard/HomePage.css">
+      <link rel="stylesheet" href="css/CardBoard/HomePage.css">
 
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	  <script src="https://cdn.rawgit.com/mladenplavsic/bootstrap-navbar-sidebar/3bd282bd/docs/docs.js"></script>
+	  <script src="js/CardBoard/docs.js"></script> 
+	  <script src="js/CardBoard/Animation.js"></script>
 	  <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-		<script src="js/CardBoard/Animation.js"></script>
+		
 
 	</head>
 	<body>
 		<div id="content-container" >
-
-			<nav class="navbar navbar-inverse navbar-fixed-left">
+			<div id="noSelect" class="navbar-header ">
+		        
+		        <a class="navbar-brand" href="#" onclick="moveButton(this)">
+					
+				</a>
+		    </div>
+			<nav class="navbar navbar-inverse navbar-fixed-right">
 		    <div class="container">
-		      <div class="navbar-header">
-		        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-		          <span class="sr-only">Toggle navigation</span>
-		          <span class="icon-bar"></span>
-		          <span class="icon-bar"></span>
-		          <span class="icon-bar"></span>
-		        </button>
-		        <a class="navbar-brand" href="#">Project name</a>
+		      <div id="select" class="navbar-header">
+		        
+		        <a class="navbar-brand" href="#" onclick="moveButton(this)">
+					<div class="bar arrow-top-r"></div>
+					<div class="bar arrow-middle-r"></div>
+					<div class="bar arrow-bottom-r"></div>
+				</a>
 		      </div>
-		      <div id="navbar" class="navbar-collapse collapse">
-		        <ul class="nav navbar-nav">
+		      <div id="navbar" class="navbar-collapse hideNav">
+		        <ul class="nav navbar-nav ">
 		          <li><a href="#">Home</a></li>
 		          <li><a href="#">About</a></li>
 		          <li><a href="#">Contact</a></li>
@@ -58,7 +63,7 @@
 		            </ul>
 		          </li>
 		        </ul>
-		        <ul class="nav navbar-nav navbar-right">
+		        <ul class="nav navbar-nav navbar-left">
 		          <li>
 		            <a data-class="navbar-fixed-left">
 		              <i class="fa fa-arrow-left"></i>
@@ -75,12 +80,12 @@
 		      </div>
 		    </div>
 		  </nav>
-
+<!--
 			<button class="btn-nav">
 			  <div class="bar arrow-top-r"></div>
 			  <div class="bar arrow-middle-r"></div>
 			  <div class="bar arrow-bottom-r"></div>
-			</button>
+			</button>-->
 
 			<div class="nav-container hidden hideNav">
 
@@ -93,8 +98,8 @@
 			  </ul>
 			</div>
 
-			<a href="https://codepen.io/tonkec" class="ua" target="_blank">
-			<i class="fa fa-user"></i></a>
+			
+			
 <!--
 			<div id="page_homeweb_ek1"  >
 				<div id="_bg__homeweb_ek2"  ></div>
