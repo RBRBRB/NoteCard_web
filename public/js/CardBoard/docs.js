@@ -1,10 +1,10 @@
 $(document).ready(function () {
   $('a[data-class]').click(function () {
     updateNavbarClass($(this).attr('data-class'));
-	
+
   });
 
-  updateNavbarClass('navbar-fixed-right'); //Set the navBar at righr side first
+  updateNavbarClass('navbar-fixed-right'); //Set the navBar at right side first
 
 });
 
@@ -27,8 +27,10 @@ function fixBodyPadding(className) {
     $('body').removeAttr('style');
     if (className === 'navbar-fixed-left') {
       $('body').css('paddingLeft', 0);
+      alert("left")
     } else {
       $('body').css('paddingRight', 0);
+      alert("right")
     }
-  } 
+  }
 }

@@ -25,7 +25,7 @@ html,
 
  .btn-nav:hover {
    cursor: pointer;
-   
+
  }
 
  .btn-nav:hover .bar {
@@ -99,6 +99,31 @@ html,
    transform: rotateZ(45deg) translateY(-11px);
    width: 25px;
  }
+ .animated .arrow-top-l {
+   -webkit-transform: rotateZ(45deg) translateY(11px);
+   -moz-transform: rotateZ(45deg) translateY(11px);
+   -ms-transform: rotateZ(45deg) translateY(11px);
+   -o-transform: rotateZ(45deg) translateY(11px);
+   transform: rotateZ(45deg) translateY(11px);
+   width: 25px;
+ }
+
+ .animated .arrow-middle-l {
+   -webkit-transform: translateX(-25px);
+   -moz-transform: translateX(-25px);
+   -ms-transform: translateX(-25px);
+   -o-transform: translateX(-25px);
+   transform: translateX(-25px);
+ }
+
+ .animated .arrow-bottom-l {
+   -webkit-transform: rotateZ(-45deg) translateY(-11px);
+   -moz-transform: rotateZ(-45deg) translateY(-11px);
+   -ms-transform: rotateZ(-45deg) translateY(-11px);
+   -o-transform: rotateZ(-45deg) translateY(-11px);
+   transform: rotateZ(-45deg) translateY(-11px);
+   width: 25px;
+ }
 
  .nav-container {
    position: absolute;
@@ -109,62 +134,6 @@ html,
    width: 150px;
  }
 
- .nav-list {
-   cursor: pointer;
-   list-style-type: none;
-   top: 50%;
-   text-align: center;
-   position: relative;
-   margin: 0;
-   padding: 0;
-   -webkit-transform: translateY(-50%);
-   -moz-transform: translateY(-50%);
-   -ms-transform: translateY(-50%);
-   -o-transform: translateY(-50%);
-   transform: translateY(-50%);
- }
-
- .list-item {
-   margin: 20px auto;
-   border: 2px solid #fff;
-   width: 50px;
-   padding: 15px;
-   -webkit-transition: all 1s ease;
-   -moz-transition: all 1s ease;
-   -ms-transition: all 1s ease;
-   -o-transition: all 1s ease;
-   transition: all 1s ease;
- }
-
- .list-item:hover {
-   border: 2px solid #17BEBB;
-   -webkit-transition: all 1s ease;
-   -moz-transition: all 1s ease;
-   -ms-transition: all 1s ease;
-   -o-transition: all 1s ease;
-   transition: all 1s ease;
- }
-
- .list-item:hover .fa {
-   color: #17BEBB;
-   -webkit-transform: scale(1.5);
-   -moz-transform: scale(1.5);
-   -ms-transform: scale(1.5);
-   -o-transform: scale(1.5);
-   transform: scale(1.5);
-   -webkit-transition: all 1s ease;
-   -moz-transition: all 1s ease;
-   -ms-transition: all 1s ease;
-   -o-transition: all 1s ease;
-   transition: all 1s ease;
- }
-
- .list-item a {
-   color: #fff;
-   font-size: 1.7em;
-   display: block;
-   width: 100%;
- }
 
  .fa {
    -webkit-transition: all 1s ease;
@@ -174,7 +143,7 @@ html,
    transition: all 1s ease;
  }
 
- @keyframes showNav {
+ @keyframes showNav-l {
    from {
      left: -100%;
    }
@@ -183,7 +152,7 @@ html,
    }
  }
 
- @-webkit-keyframes showNav {
+ @-webkit-keyframes showNav-l {
    from {
      left: -100%;
    }
@@ -192,7 +161,7 @@ html,
    }
  }
 
- @-moz-keyframes showNav {
+ @-moz-keyframes showNav-l {
    from {
      left: -100%;
    }
@@ -201,7 +170,7 @@ html,
    }
  }
 
- @-o-keyframes showNav {
+ @-o-keyframes showNav-l {
    from {
      left: -100%;
    }
@@ -210,14 +179,14 @@ html,
    }
  }
 
- .showNav {
-   -webkit-animation: showNav .5s ease forwards;
-   -moz-animation: showNav 1s ease forwards;
-   -o-animation: showNav 1s ease forwards;
-   animation: showNav .5s ease forwards;
+ .showNav-l {
+   -webkit-animation: showNav-l .5s ease forwards;
+   -moz-animation: showNav-l 1s ease forwards;
+   -o-animation: showNav-l 1s ease forwards;
+   animation: showNav-l .5s ease forwards;
  }
 
- @keyframes hideNav {
+ @keyframes hideNav-l {
    from {
      left: 0;
    }
@@ -226,7 +195,7 @@ html,
    }
  }
 
- @-webkit-keyframes hideNav {
+ @-webkit-keyframes hideNav-l {
    from {
      left: 0;
    }
@@ -235,7 +204,7 @@ html,
    }
  }
 
- @-moz-keyframes hideNav {
+ @-moz-keyframes hideNav-l {
    from {
      left: 0;
    }
@@ -244,7 +213,7 @@ html,
    }
  }
 
- @-o-keyframes hideNav {
+ @-o-keyframes hideNav-l {
    from {
      left: 0;
    }
@@ -253,36 +222,100 @@ html,
    }
  }
 
- .hideNav {
-   -webkit-animation: hideNav 1s ease forwards;
-   -moz-animation: hideNav 1s ease forwards;
-   -o-animation: hideNav 1s ease forwards;
-   animation: hideNav 1s ease forwards;
+ .hideNav-l {
+   -webkit-animation: hideNav-l 1s ease forwards;
+   -moz-animation: hideNav-l 1s ease forwards;
+   -o-animation: hideNav-l 1s ease forwards;
+   animation: hideNav-l 1s ease forwards;
    background: #2E282A;
  }
 
- .hidden {
-   
+ @keyframes showNav-r {
+   from {
+     right: -100%;
+   }
+   to {
+     right: 0;
+   }
  }
 
-.ua {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  color: #fff;
-  font-size: 2em;
-}
+ @-webkit-keyframes showNav-r {
+   from {
+     right: -100%;
+   }
+   to {
+     right: 0;
+   }
+ }
 
-.ua:hover .fa {
-   color: #17BEBB;
-   -webkit-transform: scale(1.5);
-   -moz-transform: scale(1.5);
-   -ms-transform: scale(1.5);
-   -o-transform: scale(1.5);
-   transform: scale(1.5);
-   -webkit-transition: all 1s ease;
-   -moz-transition: all 1s ease;
-   -ms-transition: all 1s ease;
-   -o-transition: all 1s ease;
-   transition: all 1s ease;
-}
+ @-moz-keyframes showNav-r {
+   from {
+     right: -100%;
+   }
+   to {
+     right: 0;
+   }
+ }
+
+ @-o-keyframes showNav-r {
+   from {
+     right: -100%;
+   }
+   to {
+     right: 0;
+   }
+ }
+
+ .showNav-r {
+   -webkit-animation: showNav-r .5s ease forwards;
+   -moz-animation: showNav-r 1s ease forwards;
+   -o-animation: showNav-r 1s ease forwards;
+   animation: showNav-r .5s ease forwards;
+ }
+
+ @keyframes hideNav-r {
+   from {
+     right: 0;
+   }
+   to {
+     right: -100%;
+   }
+ }
+
+ @-webkit-keyframes hideNav-r {
+   from {
+     right: 0;
+   }
+   to {
+     right: -100%;
+   }
+ }
+
+ @-moz-keyframes hideNav-r {
+   from {
+     right: 0;
+   }
+   to {
+     right: -100%;
+   }
+ }
+
+ @-o-keyframes hideNav-r {
+   from {
+     right: 0;
+   }
+   to {
+     right: -100%;
+   }
+ }
+
+ .hideNav-r {
+   -webkit-animation: hideNav-r 1s ease forwards;
+   -moz-animation: hideNav-r 1s ease forwards;
+   -o-animation: hideNav-r 1s ease forwards;
+   animation: hideNav-r 1s ease forwards;
+   background: #2E282A;
+ }
+ .hidden {
+
+ }
