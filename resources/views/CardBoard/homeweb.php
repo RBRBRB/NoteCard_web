@@ -46,9 +46,9 @@
 		      </div>
 		      <div id="navbar" class="navbar-collapse">
 		        <ul class="nav navbar-nav ">
-		          <li><a href="#">Home</a></li>
-		          <li><a href="#">About</a></li>
-		          <li><a href="#">Contact</a></li>
+		          <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+		          <li><a href="#"><i class="fa fa-leanpub"></i> Review</a></li>
+		          <li><a href="#"><i class="fa fa-plus"></i> Edit</a></li>
 		          <li class="dropdown">
 		            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 		            <ul class="dropdown-menu">

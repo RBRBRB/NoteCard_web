@@ -25,12 +25,12 @@ function updateNavbarClass(className) {
 function fixBodyPadding(className) {
   if (/navbar-fixed-(left|right)/.test(className)) {
     $('body').removeAttr('style');
-    if (className === 'navbar-fixed-left') {
+    if (className == 'navbar-fixed-left') {
       $('body').css('paddingLeft', 0);
-      alert("left")
+
     } else {
       $('body').css('paddingRight', 0);
-      alert("right")
+
     }
   }
 }

@@ -50,7 +50,6 @@ $(window).on('load' , function() {
     }
     else if($(this).parent().attr("id") == "noSelect")
     {
-      //alert("gg")
       $(this).toggleClass("animated");
       $(this).detach().appendTo('#select');
 
