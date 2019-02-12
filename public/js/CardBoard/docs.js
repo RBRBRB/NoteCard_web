@@ -9,7 +9,7 @@ $(document).ready(function () {
 });
 
 function updateNavbarClass(className) {
-  $('nav')
+  $('nav.navbar')
     .removeClass(function (index, css) {
       return (css.match(/(^|\s)navbar-fixed-\S+/g) || []).join(' ');
     })
@@ -26,10 +26,10 @@ function fixBodyPadding(className) {
   if (/navbar-fixed-(left|right)/.test(className)) {
     $('body').removeAttr('style');
     if (className == 'navbar-fixed-left') {
-      $('body').css('paddingLeft', 0);
+      $('body').css('borderLeft', 0);
 
     } else {
-      $('body').css('paddingRight', 0);
+      $('body').css('borderRight', 0);
 
     }
   }

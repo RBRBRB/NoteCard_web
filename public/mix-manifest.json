@@ -2,5 +2,6 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/css/colorCard.css": "/css/colorCard.css",
+    "/css/CardGrouping.css": "/css/CardGrouping.css",
     "/js/colorCard.js": "/js/colorCard.js"
 }

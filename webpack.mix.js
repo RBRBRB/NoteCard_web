@@ -16,3 +16,5 @@ mix.js('resources/assets/js/app.js', 'public/js')
 
 mix.js('resources/assets/js/colorCard.js', 'public/js')
    .sass('resources/assets/sass/colorCard.scss', 'public/css');
+
+mix.sass('resources/assets/sass/CardGrouping.scss', 'public/css')

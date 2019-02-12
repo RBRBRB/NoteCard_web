@@ -1,7 +1,8 @@
 html,
  body {
-   height: 100%;
-   width: 100%;
+   min-height: 90vh;
+   padding-left: 120px;
+   padding-right: 120px;
    margin: 0;
    background: #2E282A;
  }
@@ -130,7 +131,6 @@ html,
    left: -50%;
    top: 0;
    background: #CD5334;
-   height: 100%;
    width: 150px;
  }
 
@@ -318,4 +318,8 @@ html,
  }
  .hidden {
 
+ }
+
+ .jumbotron{
+    min-height: 700px;
  }
