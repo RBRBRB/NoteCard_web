@@ -21,7 +21,5 @@ Route::get('/layout', function () {
     return view('layout');
 });
 
-Route::get('/CardBoard', function () {
-    return view('/CardBoard/homeweb');
-});
-
+Route::get('/CardBoard/', 'CrouseController@show');
+Route::get('/CardBoard/index/', 'CrouseController@index');

@@ -17,8 +17,8 @@
 	  <link rel="stylesheet" href="https://cdn.rawgit.com/mladenplavsic/bootstrap-navbar-sidebar/3bd282bd/docs/navbar-fixed-left.min.css">
 	  <link rel="stylesheet" href="https://cdn.rawgit.com/mladenplavsic/bootstrap-navbar-sidebar/3bd282bd/docs/docs.css">
 
-    <link rel="stylesheet" href="css/CardBoard/HomePage.css">
-		<link rel="stylesheet" href="css/CardBoard/CardGrouping.css">
+    <link rel="stylesheet" href="{{asset('css/CardBoard/HomePage.css')}}">
+		<link rel="stylesheet" href="{{asset('css/CardBoard/CardGrouping.css')}}">
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	  <script src="js/CardBoard/docs.js"></script>
 	  <script src="js/CardBoard/Animation.js"></script>
@@ -27,8 +27,8 @@
 
 
 	</head>
-	<body style="height: 500px;">
-		<div id="container" >
+	<body>
+		<div id="content-container" >
 			<div id="noSelect" class="navbar-header navbar-fixed-left">
 		        <a class="navbar-brand" href="#" >
 						</a>
@@ -83,85 +83,7 @@
 
 			    <div class="jumbotron">
 						<div class="container">
-						<!-- path display
-						<nav aria-label="breadcrumb">
-						  <ol class="breadcrumb">
-						    <li class="breadcrumb-item"><a href="#">Home</a></li>
-						    <li class="breadcrumb-item"><a href="#">Library</a></li>
-						    <li class="breadcrumb-item active" aria-current="page">Data</li>
-						  </ol>
-						</nav>-->
-						<ol>
-						  <li>
-						    <div class="card card--group">Card group </div>
-
-						    <ol>
-
-						      <li>
-						        <div class="card card--group">Card group </div>
-
-						    <ol>
-
-						      <li>
-						        <div class="card ">Card</div>
-						      </li>
-						      <li>
-						        <div class="card">Card</div>
-						      </li>
-						      <li>
-						        <div class="card">Card</div>
-						      </li>
-
-						    </ol>
-						      </li>
-						      <li>
-						        <div class="card">Card</div>
-						      </li>
-						      <li>
-						        <div class="card">Card</div>
-						      </li>
-
-						    </ol>
-						  </li>
-						  <li>
-						    <div class="card card--group">Card group </div>
-						    <ol>
-
-						      <li>
-						        <div class="card ">Card </div>
-						      </li>
-						      <li>
-						        <div class="card">Card </div>
-						      </li>
-						      <li>
-						        <div class="card">Card </div>
-						      </li>
-
-						    </ol>
-						  </li>
-
-						    <div class="card card--group">Card group </div>
-						    <ol>
-
-						      <li>
-						        <div class="card is-loading">Loading card...</div>
-						      </li>
-						      <li>
-						        <div class="card is-loading">Loading card...</div>
-						      </li>
-						      <li>
-						        <div class="card is-loading">Loading card...</div>
-						      </li>
-
-						    </ol>
-						   <li><div class="card is-loading">Loading card...</div></li>
-						   <li><div class="card is-loading">Loading card...</div></li>
-						   <li><div class="card is-loading">Loading card...</div></li>
-						</ol>
-
-
-
-
+							@include('CardBoard.ShowCard')
 						</div>
 					</div>
 				</div>
