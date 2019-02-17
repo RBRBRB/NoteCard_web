@@ -20,15 +20,15 @@
     <link rel="stylesheet" href="{{asset('css/CardBoard/HomePage.css')}}">
 		<link rel="stylesheet" href="{{asset('css/CardBoard/CardGrouping.css')}}">
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	  <script src="js/CardBoard/docs.js"></script>
-	  <script src="js/CardBoard/Animation.js"></script>
+	  <script src="{{asset('js/CardBoard/docs.js')}}"></script>
+	  <script src="{{asset('js/CardBoard/Animation.js')}}"></script>
 	  <script async defer src="https://buttons.github.io/buttons.js"></script>
 
 
 
 	</head>
 	<body>
-		<div id="content-container" >
+		<div id="content-container" class="haha">
 			<div id="noSelect" class="navbar-header navbar-fixed-left">
 		        <a class="navbar-brand" href="#" >
 						</a>
@@ -48,7 +48,7 @@
 		        <ul class="nav navbar-nav ">
 		          <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
 		          <li><a href="#"><i class="fa fa-leanpub"></i> Review</a></li>
-		          <li><a href="#"><i class="fa fa-plus"></i> Edit</a></li>
+		          <li><a href="/CardBoard/create"><i class="fa fa-plus"></i> Edit</a></li>
 		          <li class="dropdown">
 		            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 		            <ul class="dropdown-menu">
@@ -81,7 +81,7 @@
 		  </nav>
 
 
-			    <div class="jumbotron">
+			    <div class="jumbotron pre-scrollable">
 						<div class="container">
 							@include('CardBoard.ShowCard')
 						</div>

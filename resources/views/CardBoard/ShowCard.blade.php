@@ -1,7 +1,11 @@
 <?php
 use App\Crouse;
-
+use App\Chapter;
 $crouses = Crouse::all();
+
+$chapters = Chapter::all();
+
+
 ?>
   <!-- path display
   <nav aria-label="breadcrumb">
@@ -17,17 +21,21 @@ $crouses = Crouse::all();
       <div class="card card--group">Card Group1</div>
       -->
       @if(count($crouses) > 1)
-        @foreach($crouses as $crouse)
+        @foreach($crouses as $index_x=>$crouse)
+
           <div class="card card--group">
             {{$crouse->subject}}
           </div>
             <ol>
+              <?php $chapter_chunk = $chapters->where('subject_id' , $index_x + 1);  ?>
+
+              @foreach($chapter_chunk as $chapter)
               <li>
-                <div class="card ">Card</div>
+                <div class="card ">
+                  {{$chapter->chapter}}
+                </div>
               </li>
-              <li>
-                <div class="card ">Card</div>
-              </li>
+              @endforeach
             </ol>
         @endforeach
 

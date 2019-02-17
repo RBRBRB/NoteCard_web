@@ -13,4 +13,10 @@ class Crouse extends Model
     //Timestamps
     public $timeStamps = false;
     //
+    public function chapters()
+    {
+      return $this->hasMany('App\Chapter','subject_id');
+      // return $this->belongsTo('App\Crouse', 'foreign_key');
+      // return $this->belongsTo('App\Crouse', 'foreign_key', 'other_key');
+    }
 }

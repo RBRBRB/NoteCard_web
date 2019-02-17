@@ -80,3 +80,7 @@ ol ol {
     /* move highlight to right */
   }
 }
+::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none;
+}
