@@ -44,20 +44,21 @@ class CrouseController extends Controller
     {
         //
         request()->validate([
-        'fname' => 'required',
+        'addPost' => 'required',
 
         ]);
+        /*
         $cover = $request->file('bookcover');
         $extension = $cover->getClientOriginalExtension();
-        Storage::disk('public')->put($cover->getFilename().'.'.$extension,  File::get($cover));
+        Storage::disk('public')->put($cover->getFilename().'.'.$extension,  File::get($cover));*/
 
-        $book = new Content();
-        $book->text = $request->fname;
-        $book->chapter_id = 1;
-        $book->mime = $cover->getClientMimeType();
-        $book->original_filename = $cover->getClientOriginalName();
-        $book->filename = $cover->getFilename().'.'.$extension;
-        $book->save();
+        $content = new Content();
+        $content->text = $request->input('addPost');
+        $content->chapter_id = 1;
+        //$content->mime = $cover->getClientMimeType();
+        //$content->original_filename = $cover->getClientOriginalName();
+        //$content->filename = $cover->getFilename().'.'.$extension;
+        $content->save();
         //return view('CardBoard.homeweb');
         return redirect('CardBoard/')->with('success' , 'Content Added');
     }

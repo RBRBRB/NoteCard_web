@@ -2,13 +2,44 @@
 @include('CardBoard.messages')
 <form method="post" action="{{url('/CardBoard')}}" enctype="multipart/form-data">
     {{ csrf_field() }}
-    <label for="fname">Text</label>
-    <input type="text" id="fname" name="fname">
+
 
     <div class="form-group">
-        <label for="author">Cover:</label>
-        <input type="file" class="form-control" name="bookcover"/>
+
+        <textarea id="article-ckeditor" class="form-control" name="addPost" rows="8" cols="80" ></textarea>
     </div>
     ...
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+<script src="https://cdn.ckeditor.com/4.11.2/standard-all/ckeditor.js"></script>
+    <script>
+
+        CKEDITOR.replace( 'article-ckeditor', {
+            extraPlugins: 'easyimage',
+            removePlugins: 'image',
+            //cloudServices_tokenUrl: 'https://example.com/cs-token-endpoint',
+            //cloudServices_uploadUrl: 'https://your-organization-id.cke-cs.com/easyimage/upload/'
+        } );
+    </script>
+
+<!--
+<script src="https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+            .create( document.querySelector( '#article-ckeditor' ) ,{
+              cloudServices: {
+                  tokenUrl: 'https://example.com/cs-token-endpoint',
+                  uploadUrl: 'https://your-organization-id.cke-cs.com/easyimage/upload/'
+              }
+
+
+            })
+            .then( editor => {
+                    console.log( editor );
+            } )
+            .catch( error => {
+                    console.error( error );
+            } );
+</script>
+-->
