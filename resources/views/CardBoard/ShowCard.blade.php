@@ -1,11 +1,12 @@
 <?php
 use App\Crouse;
 use App\Chapter;
+use App\Content;
 $crouses = Crouse::all();
 
 $chapters = Chapter::all();
 
-
+$contents = Content::all();
 ?>
   <!-- path display
   <nav aria-label="breadcrumb">
@@ -15,6 +16,7 @@ $chapters = Chapter::all();
       <li class="breadcrumb-item active" aria-current="page">Data</li>
     </ol>
   </nav>-->
+  
   <ol>
     <li>
       <!-- Fisrt Layer Subject Card Group Example
@@ -45,11 +47,21 @@ $chapters = Chapter::all();
       <div class="card card--group">Card Group1</div>
         <ol>
           <li>
-              <div class="card ">Card</div>
+              <div class="card ">
+
+              </div>
           </li>
         </ol>
     </li>
   </ol>
+  @foreach($contents as $content)
+  <div class="col-md-4 col-sm-4">
+
+    <!--{!!$content->text!!}-->
+  </div>
+
+  @endforeach
+
   <!--
   <ol>
     <li>

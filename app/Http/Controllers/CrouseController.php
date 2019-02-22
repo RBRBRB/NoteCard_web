@@ -45,12 +45,32 @@ class CrouseController extends Controller
         //
         request()->validate([
         'addPost' => 'required',
-
+        'imagefile'=>'image|nullable|max:1999'
         ]);
-        /*
-        $cover = $request->file('bookcover');
-        $extension = $cover->getClientOriginalExtension();
-        Storage::disk('public')->put($cover->getFilename().'.'.$extension,  File::get($cover));*/
+
+        // Handle File Upload
+        if($request->hasFile('imagefile')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('imagefile')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('imagefile')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('imagefile')->storeAs('public/media', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'noimage.jpg';
+        }
+
+
+        //$cover = $request->file('imagefile');
+        //$extension = $cover->getClientOriginalExtension();
+        //Storage::disk('public')->put($cover->getFilename().'.'.$extension,  File::get($cover));
+
+        //preg_match( '@src="([^"]+)"@' , $request_text, $match );
+        //$src = array_pop($match);
 
         $content = new Content();
         $content->text = $request->input('addPost');
@@ -58,8 +78,9 @@ class CrouseController extends Controller
         //$content->mime = $cover->getClientMimeType();
         //$content->original_filename = $cover->getClientOriginalName();
         //$content->filename = $cover->getFilename().'.'.$extension;
+        $content->filename = $fileNameToStore;
         $content->save();
-        //return view('CardBoard.homeweb');
+        //return view('CardBoard.show');
         return redirect('CardBoard/')->with('success' , 'Content Added');
     }
 
@@ -72,7 +93,7 @@ class CrouseController extends Controller
     public function show($id)
     {
         //
-        return view('CardBoard.homeweb');
+        return view('CardBoard.index');
     }
 
     /**

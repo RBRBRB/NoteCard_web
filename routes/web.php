@@ -24,3 +24,8 @@ Route::get('/layout', function () {
 //Route::get('/CardBoard/', 'CrouseController@show');
 //Route::get('/CardBoard/index/', 'CrouseController@index');
 Route::resource('CardBoard','CrouseController');
+//Route::post('/uploads', 'CardBoard\uploadfile.php');
+
+Route::get('summernote',array('as'=>'summernote.get','uses'=>'FileController@getSummernote'));
+
+Route::post('summernote',array('as'=>'summernote.post','uses'=>'FileController@postSummernote'));

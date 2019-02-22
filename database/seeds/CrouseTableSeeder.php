@@ -12,7 +12,7 @@ class CrouseTableSeeder extends Seeder
     public function run()
     {
         //Create faker instance
-        $faker = \Faker\Factory::create('zh_TW');
+        $faker = \Faker\Factory::create();
         //Flush the table before recreate
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         DB::table('crouses')->truncate();

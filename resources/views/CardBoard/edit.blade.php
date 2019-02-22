@@ -1,45 +1,44 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/paper/bootstrap.min.css" />
+@include('CardBoard.nav')
+
+<!--  For Summernote  -->
+<!-- include libraries(jQuery, bootstrap) -->
+
+
+
+
+<!-- include summernote css/js -->
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
+
+
+
 @include('CardBoard.messages')
-<form method="post" action="{{url('/CardBoard')}}" enctype="multipart/form-data">
+<form method="POST" action="{{ route('summernote.post') }}">
     {{ csrf_field() }}
-
-
+	<div class="col-xs-12 col-sm-12 col-md-12">
     <div class="form-group">
-
-        <textarea id="article-ckeditor" class="form-control" name="addPost" rows="8" cols="80" ></textarea>
+        <strong>Front:</strong>
+        <textarea class="form-control summernote" name="front"></textarea>
     </div>
-    ...
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="form-group">
+        <strong>Details:</strong>
+        <textarea class="form-control summernote" name="detail"></textarea>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-12 text-center">
     <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
 </form>
 
-<script src="https://cdn.ckeditor.com/4.11.2/standard-all/ckeditor.js"></script>
-    <script>
+<script type="text/javascript">
 
-        CKEDITOR.replace( 'article-ckeditor', {
-            extraPlugins: 'easyimage',
-            removePlugins: 'image',
-            //cloudServices_tokenUrl: 'https://example.com/cs-token-endpoint',
-            //cloudServices_uploadUrl: 'https://your-organization-id.cke-cs.com/easyimage/upload/'
-        } );
-    </script>
+    $(document).ready(function() {
+     $('.summernote').summernote({
+           height: 300,
+           //airMode: true,
+      });
+   });
 
-<!--
-<script src="https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js"></script>
-<script>
-    ClassicEditor
-            .create( document.querySelector( '#article-ckeditor' ) ,{
-              cloudServices: {
-                  tokenUrl: 'https://example.com/cs-token-endpoint',
-                  uploadUrl: 'https://your-organization-id.cke-cs.com/easyimage/upload/'
-              }
-
-
-            })
-            .then( editor => {
-                    console.log( editor );
-            } )
-            .catch( error => {
-                    console.error( error );
-            } );
 </script>
--->

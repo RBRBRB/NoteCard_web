@@ -15,11 +15,13 @@ class CreateContentsTable extends Migration
     {
         Schema::create('contents', function (Blueprint $table) {
             $table->increments('content_id');
-            $table->string('text');
+            $table->text('front');
+            $table->text('detail')->nullable();
             //save image
-            $table->string('filename')->nullable();
-            $table->string('mime')->nullable();
-            $table->string('original_filename')->nullable();
+            $table->string('f_filename')->nullable();
+            $table->string('d_filename')->nullable();
+            //$table->string('mime')->nullable();
+            //$table->string('original_filename')->nullable();
 
             $table->unsignedInteger('chapter_id');
             $table->foreign('chapter_id')->references('chapter_id')->on('chapters');
