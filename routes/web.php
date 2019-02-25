@@ -29,3 +29,6 @@ Route::resource('CardBoard','CrouseController');
 Route::get('summernote',array('as'=>'summernote.get','uses'=>'FileController@getSummernote'));
 
 Route::post('summernote',array('as'=>'summernote.post','uses'=>'FileController@postSummernote'));
+
+Route::get('category-tree-view',['uses'=>'CategoryController@manageCategory']);
+Route::post('add-category',['as'=>'add.category','uses'=>'CategoryController@addCategory']);
