@@ -42,6 +42,8 @@ class FileController extends Controller
             'front' => 'required',
 
         ]);
+        //get chapter_id
+        $chapterPathId = $request->input('pathArg');
 
         $front=$request->input('front');
 
@@ -77,7 +79,7 @@ class FileController extends Controller
 
         $content = new Content();
         $content->front = $front;
-        $content->chapter_id = 1;
+        $content->chapter_id = $chapterPathId;
         $content->f_filename = $image_name;
 
 
@@ -85,7 +87,7 @@ class FileController extends Controller
 
         if(count($detail) > 0)
         {
-            //dd("gg");
+            
             $dom = new \DomDocument();
             $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
             $images = $dom->getElementsByTagName('img');

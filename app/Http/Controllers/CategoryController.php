@@ -41,7 +41,7 @@ class CategoryController extends Controller
 
 
         $input = $request->all();
-        $input['parent_id'] = empty($input['parent_id']) ? 0 : $input['parent_id'];
+        //$input['parent_id'] = empty($input['parent_id']) ? 0 : $input['parent_id'];
         if(empty($input['parent_id']))
         {
           $input['parent_id'] = 0;

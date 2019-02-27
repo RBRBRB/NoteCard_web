@@ -32,3 +32,6 @@ Route::post('summernote',array('as'=>'summernote.post','uses'=>'FileController@p
 
 Route::get('category-tree-view',['uses'=>'CategoryController@manageCategory']);
 Route::post('add-category',['as'=>'add.category','uses'=>'CategoryController@addCategory']);
+
+Route::post('add-category',['as'=>'add.category','uses'=>'CrouseController@store']);
+Route::post('query-category',['as'=>'query.category','uses'=>'CrouseController@query']);

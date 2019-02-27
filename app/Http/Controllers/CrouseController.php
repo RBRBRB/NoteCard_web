@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Crouse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use App\Crouse;
+use App\Chapter;
 use App\Content;
 
 class CrouseController extends Controller
@@ -31,7 +32,9 @@ class CrouseController extends Controller
     public function create()
     {
         //
-        return view('CardBoard.edit');
+        $crouses = Crouse::all();
+        $chapters = Chapter::all();
+        return view('CardBoard.edit' , compact('crouses' , 'chapters'));
     }
 
     /**
@@ -42,46 +45,59 @@ class CrouseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        /*
         request()->validate([
         'addPost' => 'required',
         'imagefile'=>'image|nullable|max:1999'
-        ]);
+      ]);*/
+      if($request->ajax())
+      {
+        $input = $request->all();
+        if(empty($input['parent_id']))
+        {
+          //$input['parent_id'] = 0;
+          $crouse = new Crouse();
+          $crouse->subject = $input['title'];
+          $crouse->save();
+        }
+        else {
 
-        // Handle File Upload
-        if($request->hasFile('imagefile')){
-            // Get filename with the extension
-            $filenameWithExt = $request->file('imagefile')->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $request->file('imagefile')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore= $filename.'_'.time().'.'.$extension;
-            // Upload Image
-            $path = $request->file('imagefile')->storeAs('public/media', $fileNameToStore);
-        } else {
-            $fileNameToStore = 'noimage.jpg';
+          $chapter = new Chapter();
+          $chapter->subject_id = $input['parent_id'];
+          $chapter->chapter = $input['title'];
+          $chapter->save();
+          //$setParentId = Category::where('title' , $index)->get();
+          //$input['parent_id'] = $setParentId;
         }
 
 
-        //$cover = $request->file('imagefile');
-        //$extension = $cover->getClientOriginalExtension();
-        //Storage::disk('public')->put($cover->getFilename().'.'.$extension,  File::get($cover));
+        return response()->json(['success'=> 'Add success']);
+      }
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function query(Request $request)
+    {
+      if($request->ajax())
+      {
+        $input = $request->all();
 
-        //preg_match( '@src="([^"]+)"@' , $request_text, $match );
-        //$src = array_pop($match);
+        $crouse_name = $input['crouse'];
+        $chapter_name = $input['chapter'];
 
-        $content = new Content();
-        $content->text = $request->input('addPost');
-        $content->chapter_id = 1;
-        //$content->mime = $cover->getClientMimeType();
-        //$content->original_filename = $cover->getClientOriginalName();
-        //$content->filename = $cover->getFilename().'.'.$extension;
-        $content->filename = $fileNameToStore;
-        $content->save();
-        //return view('CardBoard.show');
-        return redirect('CardBoard/')->with('success' , 'Content Added');
+        $crouseFilter = Crouse::where('subject' , $crouse_name)->get();
+        $crouseIndex = $crouseFilter[0]['subject_id'];
+
+        $chapterFilter = Chapter::where('subject_id', $crouseIndex)->where('chapter' , $chapter_name)->get();
+        $chapterIndex = $chapterFilter[0]['chapter_id'];
+
+        return response()->json(['success'=> $chapterIndex]);
+      }
     }
 
     /**
