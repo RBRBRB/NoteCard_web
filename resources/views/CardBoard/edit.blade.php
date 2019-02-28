@@ -38,11 +38,11 @@
 
             <div class="form-group">
               <label >Title</label>
-              <input type="text" name="title_one" value="" class="title_one form-control">
+              <input type="text" name="title_one" value="" class="title_one form-control" required="required">
               <label >Category</label>
 
               <select id="createCrouse" class="form-control crouseList" name="">
-                <option selected="selected" value>Select Category or empty</option>
+                <option selected="selected" value> Select Category or empty</option>
                 @foreach($crouses as $k => $crouse)
                   <option value="{{$k+1}}">{{$crouse->subject}}</option>
                 @endforeach
@@ -51,6 +51,7 @@
             <div class="form-group">
               <button id="addNew" class="btn btn-success">Add New</button>
             </div>
+            <div id="addError"></div>
 
         </div>
       </div>
@@ -101,6 +102,7 @@
 
       $("#addNew").on('click' , function(){
         //alert($(".crouseList").val());
+
         $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
         $.ajax({
           '_token':'{{csrf_token()}}',
@@ -108,53 +110,65 @@
           type: "post",
           //data: $(this).serialize(),
 
-          data: {          //$(this).serialize(),
+          data: {
             'title': $(".title_one").val(),
             'parent_id': $(".crouseList").val(),
           } ,
           success: function(result){
             //reload categories tree
             //alert(result['success']);
-
-            var ul = document.getElementById("tree1");
-
-            var crouse_index = $(".crouseList").val();
-            //create Crouse folder
-            if(crouse_index == 0)
+            if(result['success'] == 'success')
             {
-              //insert crouse
-              var optionCnt = $('option').length;
+              $('#addError').removeClass("alert alert-danger").text("");
 
-              $("#tree1").append("<li class='branch delegate'>" + $(".title_one").val() + "<ul></ul></li>");
-              $("<option value=" + optionCnt + ">" + $(".title_one").val() + "</option>").insertAfter("#createCrouse>option:last-child"); //add value
-            }
-            else {
-                //insert chapter
+              var ul = document.getElementById("tree1");
 
-                $crouseIndex = $("#tree1>li:nth-child(" + parseInt(crouse_index)+ ")");
-                //alert($crouseIndex.find("li").length);
-                if($crouseIndex.find("li").length > 0)
-                {
+              var crouse_index = $(".crouseList").val();
+              //create Crouse folder
+              if(crouse_index == 0)
+              {
+                //insert crouse
+                var optionCnt = $('option').length;
 
-                  if($crouseIndex.find("li").attr('style') == 'display: none;')
+                $("#tree1").append("<li class='branch delegate'>" + $(".title_one").val() + "<ul></ul></li>");
+                $("<option value=" + optionCnt + ">" + $(".title_one").val() + "</option>").insertAfter("#createCrouse>option:last-child"); //add value
+              }
+              else {
+                  //insert chapter
+
+                  $crouseIndex = $("#tree1>li:nth-child(" + parseInt(crouse_index)+ ")");
+
+                  if($crouseIndex.find("li").length > 0)
                   {
-                    $crouseIndex.find("ul").append("<li class='delegate' style='display: none;'>" + $(".title_one").val() + "</li>");
+
+                    if($crouseIndex.find("li").attr('style') == 'display: none;')
+                    {
+                      $crouseIndex.find("ul").append("<li class='delegate' style='display: none;'>" + $(".title_one").val() + "</li>");
+                    }
+                    else {
+                      $crouseIndex.find("ul").append("<li class='delegate'>" + $(".title_one").val() + "</li>");
+                    }
+
                   }
                   else {
-                    $crouseIndex.find("ul").append("<li class='delegate'>" + $(".title_one").val() + "</li>");
+                    //has bug
+                    $crouseIndex.find("ul").append("<li class='delegate' style='display: none;'>" + $(".title_one").val() + "</li>");
+
                   }
+                  $('#tree1').treed();
+                  $('#tree1').treed();
 
-                }
-                else {
-                  //has bug
-                  $crouseIndex.find("ul").append("<li class='delegate' style='display: none;'>" + $(".title_one").val() + "</li>");
+              }
 
-                }
-                $('#tree1').treed();
-                $('#tree1').treed();
+            }else if (result['success'] == 'failtitle') {
+              $('#addError').addClass("alert alert-danger").removeAttr("style").text("Title Empty").fadeOut(2000);
+
+            }else if (result['success'] == 'failcrouse') {
+              $('#addError').addClass("alert alert-danger").removeAttr("style").text("Crouse Duplicate").fadeOut(2000);
 
             }
-              $('.title_one').val('');
+
+            $('.title_one').val('');
         }});
 
       });
@@ -185,7 +199,7 @@
               $('#crousePath').remove();
               $('#chapterPath').remove();
             }
-            
+
             $('.breadcrumb').append("<li id='crousePath' class='breadcrumb-item' >" + crouse + "</li><li id='chapterPath' class='breadcrumb-item active' >" + chapter + "</li>");
             $('#chapterPathSet').val(chapterPath_id);
 

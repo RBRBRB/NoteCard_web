@@ -45,71 +45,75 @@ class FileController extends Controller
         //get chapter_id
         $chapterPathId = $request->input('pathArg');
 
-        $front=$request->input('front');
+        $front = $request->input('front');
 
         $dom = new \DomDocument();
+        $content = new Content();
 
         $dom->loadHtml($front, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
         $images = $dom->getElementsByTagName('img');
 
-        foreach($images as $img){
+        if(!empty($images[0]))
+        {
+          foreach($images as $img){
 
-            $data = $img->getAttribute('src');
+              $data = $img->getAttribute('src');
 
-            list($type, $data) = explode(';', $data);
+              list($type, $data) = explode(';', $data);
 
-            list(, $data)      = explode(',', $data);
+              list(, $data)      = explode(',', $data);
 
-            $data = base64_decode($data);
+              $data = base64_decode($data);
 
-            $image_name= "/upload/" . 'f_'.time().'.png';
+              $image_name= "/upload/" . 'f_'.time().'.png';
 
-            $path = public_path() . $image_name;
+              $path = public_path() . $image_name;
 
-            file_put_contents($path, $data);
+              file_put_contents($path, $data);
 
-            $img->removeAttribute('src');
+              $img->removeAttribute('src');
 
-            $img->setAttribute('src', $image_name);
+              $img->setAttribute('src', $image_name);
+
+          }
+          $front = $dom->saveHTML();
+          $content->f_filename = $image_name;
 
         }
 
-        $front = $dom->saveHTML();
-
-        $content = new Content();
         $content->front = $front;
         $content->chapter_id = $chapterPathId;
-        $content->f_filename = $image_name;
+
 
 
         $detail = $request->input('detail');
 
         if(count($detail) > 0)
         {
-            
+
             $dom = new \DomDocument();
             $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
             $images = $dom->getElementsByTagName('img');
+            if(!empty($images[0]))
+            {
+              foreach($images as $img){
+                  $data = $img->getAttribute('src');
+                  list($type, $data) = explode(';', $data);
+                  list(, $data)      = explode(',', $data);
+                  $data = base64_decode($data);
+                  $image_name= "/upload/" . 'd_'.time().'.png';
+                  $path = public_path() . $image_name;
+                  file_put_contents($path, $data);
+                  $img->removeAttribute('src');
+                  $img->setAttribute('src', $image_name);
 
-            foreach($images as $img){
-                $data = $img->getAttribute('src');
-                list($type, $data) = explode(';', $data);
-                list(, $data)      = explode(',', $data);
-                $data = base64_decode($data);
-                $image_name= "/upload/" . 'd_'.time().'.png';
-                $path = public_path() . $image_name;
-                file_put_contents($path, $data);
-                $img->removeAttribute('src');
-                $img->setAttribute('src', $image_name);
-
+              }
+              $detail = $dom->saveHTML();
+              $content->d_filename = $image_name;
             }
-            $detail = $dom->saveHTML();
-
 
             $content->detail = $detail;
-            $content->d_filename = $image_name;
-
         }
 
         $content->save();

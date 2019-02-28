@@ -1,22 +1,3 @@
-<?php
-use App\Crouse;
-use App\Chapter;
-use App\Content;
-$crouses = Crouse::all();
-
-$chapters = Chapter::all();
-
-$contents = Content::all();
-?>
-  <!-- path display
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">Home</a></li>
-      <li class="breadcrumb-item"><a href="#">Library</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Data</li>
-    </ol>
-  </nav>-->
-  
   <ol>
     <li>
       <!-- Fisrt Layer Subject Card Group Example
@@ -33,7 +14,7 @@ $contents = Content::all();
 
               @foreach($chapter_chunk as $chapter)
               <li>
-                <div class="card ">
+                <div class="card " value="{{$chapter->chapter_id}}" id="chapterCard">
                   {{$chapter->chapter}}
                 </div>
               </li>
@@ -54,14 +35,18 @@ $contents = Content::all();
         </ol>
     </li>
   </ol>
-  @foreach($contents as $content)
-  <div class="col-md-4 col-sm-4">
+  <input type="hidden" name="pathArg" value="" id="chapterPathSet">
 
-    <!--{!!$content->text!!}-->
-  </div>
 
-  @endforeach
+<script type="text/javascript">
+  $("#chapterCard").on('click' , function(){
+    //var chooseChapter = $(this).attr('value');
+    alert($(this).attr('value'));
+    $('#chapterPathSet').val($(this).attr('value'));
+  });
 
+
+</script>
   <!--
   <ol>
     <li>

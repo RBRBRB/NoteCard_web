@@ -61,3 +61,6 @@
     padding:0px 0px 0px 0px;
     outline: 0;
 }
+.breadcrumb{
+  min-width: 500px !important;
+}

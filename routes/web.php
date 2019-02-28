@@ -22,7 +22,7 @@ Route::get('/layout', function () {
 });
 
 //Route::get('/CardBoard/', 'CrouseController@show');
-//Route::get('/CardBoard/index/', 'CrouseController@index');
+Route::post('/CardBoard/review', 'CrouseController@review'); //has bug
 Route::resource('CardBoard','CrouseController');
 //Route::post('/uploads', 'CardBoard\uploadfile.php');
 

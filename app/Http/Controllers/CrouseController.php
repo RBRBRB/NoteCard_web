@@ -21,7 +21,19 @@ class CrouseController extends Controller
         //
         //$crouses = Crouse::all();
         //return view('CardBoard.index')->with('crouses' , $crouses);
-        return view('CardBoard.homeweb');
+        $crouses = Crouse::all();
+        $chapters = Chapter::all();
+        return view('CardBoard.homeweb', compact('crouses' , 'chapters'));
+    }
+    /**
+     * Show the review scene.
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function review(Request $request)
+    {
+      $chapterPathId = $request->input('pathArg');
+        dd($chapterPathId);
     }
 
     /**
@@ -51,28 +63,43 @@ class CrouseController extends Controller
         'addPost' => 'required',
         'imagefile'=>'image|nullable|max:1999'
       ]);*/
+
+
       if($request->ajax())
       {
         $input = $request->all();
-        if(empty($input['parent_id']))
+        if(!empty($input['title']))
         {
-          //$input['parent_id'] = 0;
-          $crouse = new Crouse();
-          $crouse->subject = $input['title'];
-          $crouse->save();
+          if(empty($input['parent_id']))
+          {
+            $inputSubject = $input['title'];
+            $crousefilter = Crouse::where('subject' , $inputSubject)->get();
+
+            if($crousefilter->isEmpty())
+            {
+              $crouse = new Crouse();
+              $crouse->subject = $inputSubject;
+              $crouse->save();
+
+              return response()->json(['success'=> 'success']);
+            }
+            else {
+              return response()->json(['success'=> 'failcrouse']);
+            }
+
+          }
+          else {
+
+            $chapter = new Chapter();
+            $chapter->subject_id = $input['parent_id'];
+            $chapter->chapter = $input['title'];
+            $chapter->save();
+
+            return response()->json(['success'=> 'success']);
+          }
+        }else {
+          return response()->json(['success'=> 'failtitle']);
         }
-        else {
-
-          $chapter = new Chapter();
-          $chapter->subject_id = $input['parent_id'];
-          $chapter->chapter = $input['title'];
-          $chapter->save();
-          //$setParentId = Category::where('title' , $index)->get();
-          //$input['parent_id'] = $setParentId;
-        }
-
-
-        return response()->json(['success'=> 'Add success']);
       }
     }
     /**
