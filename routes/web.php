@@ -22,7 +22,8 @@ Route::get('/layout', function () {
 });
 
 //Route::get('/CardBoard/', 'CrouseController@show');
-Route::post('/CardBoard/review', 'CrouseController@review'); //has bug
+//Route::post('/CardBoard/review', 'CrouseController@review'); //has bug
+
 Route::resource('CardBoard','CrouseController');
 //Route::post('/uploads', 'CardBoard\uploadfile.php');
 
@@ -35,3 +36,5 @@ Route::post('add-category',['as'=>'add.category','uses'=>'CategoryController@add
 
 Route::post('add-category',['as'=>'add.category','uses'=>'CrouseController@store']);
 Route::post('query-category',['as'=>'query.category','uses'=>'CrouseController@query']);
+
+Route::post('review-content',['as'=>'review.content','uses'=>'CrouseController@review']);

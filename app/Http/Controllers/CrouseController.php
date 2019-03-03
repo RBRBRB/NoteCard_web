@@ -33,7 +33,8 @@ class CrouseController extends Controller
     public function review(Request $request)
     {
       $chapterPathId = $request->input('pathArg');
-        dd($chapterPathId);
+      //dd($chapterPathId);
+      return view('CardBoard.review' , compact('chapterPathId'));
     }
 
     /**

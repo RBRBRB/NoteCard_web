@@ -14,7 +14,7 @@
 
               @foreach($chapter_chunk as $chapter)
               <li>
-                <div class="card " value="{{$chapter->chapter_id}}" id="chapterCard">
+                <div class="card chapterCard" value="{{$chapter->chapter_id}}">
                   {{$chapter->chapter}}
                 </div>
               </li>
@@ -35,14 +35,20 @@
         </ol>
     </li>
   </ol>
-  <input type="hidden" name="pathArg" value="" id="chapterPathSet">
+  <form id="reviewContent" class="" action="{{ route('review.content') }}" method="post">
+    {{ csrf_field() }}
+    <input type="hidden" name="pathArg" value="" id="chapterPathSet">
+  </form>
+
 
 
 <script type="text/javascript">
-  $("#chapterCard").on('click' , function(){
-    //var chooseChapter = $(this).attr('value');
-    alert($(this).attr('value'));
+  $(".chapterCard").on('click' , function(){
+    //alert($(this).attr('value'));
     $('#chapterPathSet').val($(this).attr('value'));
+    //alert("ready to send chapter id");
+		document.getElementById("reviewContent").submit();
+
   });
 
 
