@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Greensock Navigation | CODEGRID</title>
-    <link rel="stylesheet" href="{{asset('css/fullnav.css')}}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="{{asset('css/CardBoard/fullnav.css')}}">
+    <link rel="stylesheet" href="{{asset('css/CardBoard/CardGrouping.css')}}">
+
 
 <!--    Bootstrap cdn-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/paper/bootstrap.min.css" />
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 
@@ -16,11 +18,15 @@
 
 <!--    Jquery cdn-->
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 
 <!--    Greensock-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+
+<!-- Custon js -->
+
 </head>
-<body>
+
 
    <div class="wrapper">
         <div class="menu-btn">
@@ -32,9 +38,9 @@
                 <div class="col-lg overlay">
                     <div class="nav">
                         <ul id="fullnav">
-                            <li>Home</li>
-                            <li>Our Story</li>
-                            <li>Portfolio</li>
+                            <li><a href="/CardBoard/">Home</a></li>
+                            <li><a href="#">Demostration</a></li>
+                            <li><a href="/CardBoard/create">Edit</a></li>
                             <li>Contact</li>
                         </ul>
                     </div>
@@ -67,6 +73,5 @@
       });
 
   </script>
-
-</body>
-</html>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>

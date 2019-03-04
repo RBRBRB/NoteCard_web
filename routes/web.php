@@ -42,3 +42,9 @@ Route::post('review-content',['as'=>'review.content','uses'=>'CrouseController@r
 Route::get('/ResponsiveFullNav', function () {
     return view('ResponsiveFullNav.index');
 });
+Route::get('/gg', function () {
+    return view('CardBoard.index');
+});
+Route::get('/FilmStripCarousel', function () {
+    return view('FilmStripCarousel.flimStripCarousel');
+});

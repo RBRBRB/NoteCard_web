@@ -1,0 +1,52 @@
+.video-wrapper {
+  background: #000 none repeat scroll 0 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.small-video-row {
+  padding: 60px 0px;
+}
+
+.slick-slide {
+  transition: ease-in-out all .15s ease;
+  transform: scale(1, 1);
+  background-color: rgba(0, 0, 0, 0.75);
+  position: relative;
+}
+
+.slick-current {
+  transform: scale(1.25, 1.25);
+  transition: ease-in-out all .15s ease;
+  z-index: 2;
+  overflow:hidden;
+}
+
+.slick-current:hover {
+  cursor: pointer;
+}
+
+.video-overlay {
+  background-color: rgba(0, 0, 0, 0.75);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.slick-current .video-overlay {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.small-video-text {color:#fff;}
+
+
+.slick-slide img {
+    display: block;
+    width: 100%;
+}
+
+/************** Custom overflow ********/
+
+.slick-list {
+    overflow: visible;
+}

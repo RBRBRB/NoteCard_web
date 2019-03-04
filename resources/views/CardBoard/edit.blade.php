@@ -1,94 +1,100 @@
-@include('CardBoard.nav')
+@include('CardBoard.fullnav')
 
 <!--  For Summernote  -->
 <!-- include libraries(jQuery, bootstrap) -->
 
 
-<link href="/css/treeview.css" rel="stylesheet">
+<link href="/css/CardBoard/treeview.css" rel="stylesheet">
 
 <!-- include summernote css/js -->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
+<body>
 
 
-<div class="panel panel-primary">
-  <div class="panel-heading">Manage Category TreeView</div>
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-md-6">
-          <h3>Category List</h3>
-            <ul id="tree1">
-              @foreach($crouses as $c_index=>$crouse)
-                <li>
-                  {{$crouse->subject}}
-                  <?php $chapter_chunk = $chapters->where('subject_id' , $c_index + 1);  ?>
-                  <ul>
-                    @foreach($chapter_chunk as $chapter)
-                      <li class="delegate">
-                        {{$chapter->chapter}}
-                      </li>
-                    @endforeach
-                  </ul>
-                </li>
-              @endforeach
-            </ul>
-        </div>
-        <div class="col-md-6">
-          <h3>Add New Category</h3>
-
-            <div class="form-group">
-              <label >Title</label>
-              <input type="text" name="title_one" value="" class="title_one form-control" required="required">
-              <label >Category</label>
-
-              <select id="createCrouse" class="form-control crouseList" name="">
-                <option selected="selected" value> Select Category or empty</option>
-                @foreach($crouses as $k => $crouse)
-                  <option value="{{$k+1}}">{{$crouse->subject}}</option>
+<div class="panel-group">
+  <div class="panel panel-primary">
+    <div class="panel-heading">Manage Category TreeView</div>
+      <div class="panel-body" id="treeBody">
+        <div class="row">
+          <div class="col-md-6">
+            <h3>Category List</h3>
+              <ul id="tree1">
+                @foreach($crouses as $c_index=>$crouse)
+                  <li>
+                    {{$crouse->subject}}
+                    <?php $chapter_chunk = $chapters->where('subject_id' , $c_index + 1);  ?>
+                    <ul>
+                      @foreach($chapter_chunk as $chapter)
+                        <li class="delegate">
+                          {{$chapter->chapter}}
+                        </li>
+                      @endforeach
+                    </ul>
+                  </li>
                 @endforeach
-              </select>
-            </div>
-            <div class="form-group">
-              <button id="addNew" class="btn btn-success">Add New</button>
-            </div>
-            <div id="addError"></div>
+              </ul>
+          </div>
+          <div class="col-md-6">
+            <h3>Add New Category</h3>
+              <div class="form-group">
+                <label >Title</label>
+                <input type="text" name="title_one" value="" class="title_one form-control" required="required">
+                <label >Category</label>
 
+                <select id="createCrouse" class="form-control crouseList" name="">
+                  <option selected="selected" value> Select Category or empty</option>
+                  @foreach($crouses as $k => $crouse)
+                    <option value="{{$k+1}}">{{$crouse->subject}}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="form-group">
+                <button id="addNew" class="btn btn-success">Add New</button>
+              </div>
+              <div id="addError"></div>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">Category List</li>
-            </ol>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">Category List</li>
+              </ol>
+            </div>
           </div>
         </div>
       </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading"> Content Add</div>
+    <div class="panel-body">
+      @include('CardBoard.messages')
+      <form method="POST" action="{{ route('summernote.post') }}">
+          {{ csrf_field() }}
+      	<div class="col-xs-12 col-sm-12 col-md-12">
+          <div class="form-group">
+              <strong>Front:</strong>
+              <textarea class="form-control summernote" name="front"></textarea>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <div class="form-group">
+              <strong>Details:</strong>
+              <textarea class="form-control summernote" name="detail"></textarea>
+          </div>
+        </div>
+        <input type="hidden" name="pathArg" value="" id="chapterPathSet">
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
     </div>
-    </div>
+  </div>
+</div>
 
-@include('CardBoard.messages')
-<form method="POST" action="{{ route('summernote.post') }}">
-    {{ csrf_field() }}
-	<div class="col-xs-12 col-sm-12 col-md-12">
-    <div class="form-group">
-        <strong>Front:</strong>
-        <textarea class="form-control summernote" name="front"></textarea>
-    </div>
-  </div>
-  <div class="col-xs-12 col-sm-12 col-md-12">
-    <div class="form-group">
-        <strong>Details:</strong>
-        <textarea class="form-control summernote" name="detail"></textarea>
-    </div>
-  </div>
-  <input type="hidden" name="pathArg" value="" id="chapterPathSet">
-  <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </div>
-</form>
-
-<script src="/js/treeview.js"></script>
+</body>
+<script src="/js/CardBoard/treeview.js"></script>
 <script type="text/javascript">
 
     $(document).ready(function() {
@@ -209,7 +215,9 @@
 
 
       });
-
+      $(".panel-heading").on('click' , function(){
+        $('#treeBody').toggle();
+      });
    });
 
 </script>

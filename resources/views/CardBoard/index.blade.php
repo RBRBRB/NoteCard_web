@@ -1,17 +1,104 @@
-@section('content')
-  <h1>Posts</h1>
-  @if(count($crouses) > 1)
-    @foreach($crouses as $crouse)
-      <div class="well">
-        <h3>{{$crouse->subject}}</h3>
-        <small>Written on{{$crouse->created_at}}</small>
-      </div>
+<link rel="stylesheet" href="{{asset('css/CardBoard/CardGrouping.css')}}">
 
-    @endforeach
+<ol>
+  <li>
+    <div class="card card--group">Card group </div>
 
-  @else
-    <p>No Crouse Now!</p>
-  @endif
-@endsection
+    <ol>
 
-@yield('content')
+      <li>
+        <div class="card card--group">Card group </div>
+
+    <ol>
+
+      <li>
+        <div class="card ">Card</div>
+      </li>
+      <li>
+        <div class="card">Card</div>
+      </li>
+      <li>
+        <div class="card">Card</div>
+      </li>
+
+    </ol>
+      </li>
+      <li>
+        <div class="card">Card</div>
+      </li>
+      <li>
+        <div class="card">Card</div>
+      </li>
+
+    </ol>
+  </li>
+  <li>
+    <div class="card card--group">Card group </div>
+    <ol>
+
+      <li>
+        <div class="card ">Card </div>
+      </li>
+      <li>
+        <div class="card">Card </div>
+      </li>
+      <li>
+        <div class="card">Card </div>
+      </li>
+
+    </ol>
+  </li>
+  <li>
+    <div class="card card--group">Card group
+
+    </div>
+    <ol>
+
+      <li>
+        <div class="card ">Card </div>
+      </li>
+      <li>
+        <div class="card">Card </div>
+      </li>
+      <li>
+        <div class="card">Card </div>
+      </li>
+
+    </ol>
+  </li>
+  <li>
+    <div class="card card--group">Card group </div>
+    <ol>
+
+      <li>
+        <div class="card ">Card </div>
+      </li>
+      <li>
+        <div class="card">Card</div>
+      </li>
+      <li>
+        <div class="card">Card</div>
+      </li>
+
+    </ol>
+  </li>
+ <li>
+    <div class="card card--group">Card group </div>
+    <ol>
+
+      <li>
+        <div class="card is-loading">Loading card...</div>
+      </li>
+      <li>
+        <div class="card is-loading">Loading card...</div>
+      </li>
+      <li>
+        <div class="card is-loading">Loading card...</div>
+      </li>
+
+    </ol>
+   <li><div class="card is-loading">Loading card...</div></li>
+   <li><div class="card is-loading">Loading card...</div></li>
+   <li><div class="card is-loading">Loading card...</div></li>
+</ol>
+<script src="{{asset('js/CardBoard/fullnav.js')}}"></script>

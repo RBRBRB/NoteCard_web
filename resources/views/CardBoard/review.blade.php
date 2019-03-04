@@ -1,3 +1,3 @@
-@include('CardBoard.nav')
+@include('CardBoard.fullnav')
 
 <h3>{{$chapterPathId}}</h3>

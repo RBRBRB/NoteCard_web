@@ -18,8 +18,11 @@
 
 	</head>
 	<body>
+
 		<div id="content-container" class="haha">
-			@include('CardBoard.nav')
+		
+			 @include('CardBoard.fullnav')
+
 
 			    <div class="jumbotron pre-scrollable">
 						<div class="container">
