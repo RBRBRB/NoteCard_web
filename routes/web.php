@@ -37,13 +37,14 @@ Route::post('add-category',['as'=>'add.category','uses'=>'CategoryController@add
 Route::post('add-category',['as'=>'add.category','uses'=>'CrouseController@store']);
 Route::post('query-category',['as'=>'query.category','uses'=>'CrouseController@query']);
 
-Route::post('review-content',['as'=>'review.content','uses'=>'CrouseController@review']);
+Route::post('review-content',['as'=>'review.content','uses'=>'ContentController@review']);
+Route::get('/review-content', function () {
+    return view('ContentController@index');
+});
+
 
 Route::get('/ResponsiveFullNav', function () {
     return view('ResponsiveFullNav.index');
-});
-Route::get('/gg', function () {
-    return view('CardBoard.index');
 });
 Route::get('/FilmStripCarousel', function () {
     return view('FilmStripCarousel.flimStripCarousel');
