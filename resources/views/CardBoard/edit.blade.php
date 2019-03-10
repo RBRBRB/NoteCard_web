@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+
     @include('CardBoard.fullnav')
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
     <!--  For Summernote  -->
     <!-- include libraries(jQuery, bootstrap) -->
 
@@ -102,8 +103,8 @@
       $(document).ready(function() {
 
        $('.summernote').summernote({
-             height: 300,
-
+             height: 200,
+             lang : 'zh-CN',
 
              //airMode: true,
         });

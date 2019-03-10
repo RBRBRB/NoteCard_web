@@ -9,3 +9,12 @@ function classToggle() {
 
   console.log(this);
 }
+$('body').keypress(function(event){
+  var keycode = (event.keyCode ? event.keyCode : event.which);
+    if(keycode == '13'){
+        //Roll up all chapter if press enter
+        $('.card--group').removeClass('is-active');
+    }
+
+
+});

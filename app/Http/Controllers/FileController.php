@@ -47,10 +47,16 @@ class FileController extends Controller
 
         $front = $request->input('front');
 
-        $dom = new \DomDocument();
+        $dom = new \DOMDocument('1.0', 'UTF-8');
         $content = new Content();
 
-        $dom->loadHtml($front, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+        //$dom->loadHtml($front, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+        $dom->loadHTML(mb_convert_encoding($front, 'UTF-8', 'UTF-8'));
+
+        //echo mb_convert_encoding($front, 'HTML-ENTITIES', 'UTF-8');
+        dd($dom);
 
         $images = $dom->getElementsByTagName('img');
 
@@ -93,7 +99,8 @@ class FileController extends Controller
         {
 
             $dom = new \DomDocument();
-            $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+            //$dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+            $dom->loadHTML(mb_convert_encoding($detail, 'UTF-8', 'UTF-8'));
             $images = $dom->getElementsByTagName('img');
             if(!empty($images[0]))
             {

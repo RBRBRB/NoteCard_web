@@ -19,10 +19,11 @@ html,
   font-family: sans-serif;
   color: #888 !important;
   font-size: 27px !important;
-  background: #2E282A;
-  margin-left: 120px;
-  margin-right: 120px;
+  background: #2E282A !important;
+  margin-left: 0px;
+  margin-right: 0px;
 }
+
 a {
   text-decoration: none !important;
   color: #fff !important;
@@ -32,6 +33,10 @@ a {
     margin: 1.2em;
     right: 0;
     z-index: 999;
+
+}
+.menu-btn:hover{
+  transform: scale(3,3);
 }
 
 .menu-btn button {
@@ -88,7 +93,7 @@ ul#fullnav {
     margin-right: 120px;
 }
 
-#fullnav li:first-child:hover::before {
+#fullnav li:first-child a:hover::before {
     content: "";
     z-index: -1;
     width: 300px;
@@ -102,7 +107,7 @@ ul#fullnav {
     animation: fade-in 0.5s ease-in-out;
 }
 
-#fullnav li:nth-child(2):hover::before {
+#fullnav li:nth-child(2) a:hover::before {
     content: "";
     z-index: -1;
     width: 300px;
@@ -116,7 +121,7 @@ ul#fullnav {
     animation: fade-in 0.5s ease-in-out;
 }
 
-#fullnav li:nth-child(3):hover::before {
+#fullnav li:nth-child(3) a:hover::before {
     content: "";
     z-index: -1;
     width: 300px;
@@ -130,7 +135,7 @@ ul#fullnav {
     animation: fade-in 0.5s ease-in-out;
 }
 
-#fullnav li:nth-child(4):hover::before {
+#fullnav li:nth-child(4) a:hover::before {
     content: "";
     z-index: -1;
     width: 300px;
@@ -173,7 +178,7 @@ ul#fullnav {
 }
 
 .jumbotron{
-
+  background: #E6E6E6 !important;
    min-height: 700px;
 }
 #content-container{
@@ -181,4 +186,23 @@ ul#fullnav {
 }
 .panel-default>.panel-body{
 background:#2E282A;
+}
+#filmStrip {
+  margin:0px auto !important;
+  border-radius: 50px;
+  background: #BBC1BB;
+  height: 100px;
+  width: 1000px;
+
+  z-index: 997;
+}
+.front .flipmark_f{
+  width: 50px !important;
+  height: 50px;
+  float: right;
+}
+.back .flipmark_b{
+  width: 50px !important;
+  height: 50px;
+  
 }

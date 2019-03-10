@@ -1,6 +1,7 @@
 
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
     <link rel="stylesheet" href="{{asset('css/CardBoard/fullnav.css')}}">
     <link rel="stylesheet" href="{{asset('css/CardBoard/CardGrouping.css')}}">
 
@@ -41,7 +42,7 @@
                     <div class="nav">
                         <ul id="fullnav">
                             <li><a href="/CardBoard/">Home</a></li>
-                            <li><a href="#">Demostration</a></li>
+                            <li><a href="/review-content">Demostration</a></li>
                             <li><a href="/CardBoard/create">Edit</a></li>
                             <li>Contact</li>
                         </ul>
@@ -55,7 +56,7 @@
 
       var t1 = new TimelineMax({paused: true});
 
-      t1.to(".overlay", 1.6, {
+      t1.to(".overlay", 0.8, {
 
           top: 0,
           ease: Expo.easeInOut
@@ -65,6 +66,15 @@
       t1.staggerFrom(".menu ul li", 1, {y: 100, opacity: 0, ease: Expo.easeOut}, 0.1);
 
       t1.reverse();
+      $(".menu-btn").mouseenter(function(){
+        t1.reversed(!t1.reversed());
+      })
+      /*
+      t1.reverse();
+      $("#fullnav li").mouseleave(function(){
+        t1.reversed(!t1.reversed());
+      })*/
+      /*
       $(document).on("click", ".menu-btn", function() {
           t1.reversed(!t1.reversed());
       });
@@ -72,7 +82,7 @@
       t1.reverse();
       $(document).on("click", "#fullnav li", function() {
           t1.reversed(!t1.reversed());
-      });
+      });*/
 
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

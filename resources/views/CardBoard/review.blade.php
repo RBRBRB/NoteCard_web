@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
     @include('CardBoard.fullnav')
 
      <link rel="stylesheet" href="{{asset('css/CardBoard/review.css')}}">
@@ -26,16 +27,22 @@
       @foreach($contents as $content)
       <div class="cardbox">
         <div class="card">
-          <div class="front">{!!$content->front!!}</div>
+
           @if(count($content->detail) > 0)
-            <div class="back">{!!$content->detail!!}</div>
+            <div class="front"><img src="https://img.icons8.com/ios/50/000000/about.png" class="flipmark_f">{!!$content->front!!}</div>
+            <div class="back"><img src="https://img.icons8.com/cotton/50/000000/circled-left-2.png" class="flipmark_b">{!!$content->detail!!}</div>
+          @else
+            <div class="front">{!!$content->front!!}</div>
           @endif
         </div>
       </div>
       @endforeach
     </div>
-    <div id="test" style="height: 300px;width: 1000px; background: #ff0;">
+    <div id="filmStrip">
+      <ul id="filmnav">
 
+
+      </ul>
     </div>
   </body>
   <script type="text/javascript">
@@ -48,11 +55,15 @@
 
       var timeout ;
       var startPos = {};//开始位置
+      var startPosFast = {};
       var endPos = {};//结束位置
+      var endPostFast = {};
       var scrollDirection;//滚动方向
+
       var timr;//定时器，后面控制速度会使用
       var touch;//记录触碰节点
-      var index = 0;//记录滑动到第几张图片
+      var touchFast;
+
 
       /*
       $('.owl-carousel').ontouchstart(function() {
@@ -76,13 +87,22 @@
         alert("touch");
         e.preventDefault();
       });*/
-      $('#test').on('touchstart' , function(event){
+      $('#filmStrip').on('touchstart' , function(event){
+
+        //$('#filmStrip').fadeTo("fast" , 0.8);
+        //$('#filmStrip').css({"box-shadow": "3px 3px 5px #D4DBD4"})
+        $('#filmStrip').fadeTo("slow" , 0.8);
         touch = event.targetTouches[0];//取得第一个touch的坐标值
         startPos = {x:touch.pageX,y:touch.pageY}
         scrollDirection = 0;
       })
+
       $('.card').on('touchstart' , function(event){
+        $('#filmStrip').fadeTo("slow" , 0.15);
         //console.log($(this).find('.back').length);
+        touchFast = event.targetTouches[0];
+        startPosFast = {x:touchFast.pageX,y:touchFast.pageY}
+        scrollDirectionFast = 0;
 
         $this = $(this); //very important
         if($(this).find('.back').length == 1)
@@ -93,12 +113,11 @@
             }, 600);
         }
       });
-      $('.card').on('touchend' , function(){
-        clearTimeout(timeout);
-      });
 
-      var oInp = document.getElementById("test");
-      $('#test').on('touchmove' , function(event){
+
+      var oInp = document.getElementById("filmStrip");
+      $('#filmStrip').on('touchmove' , function(event){
+        //$('#filmStrip').fadeTo("fast" , 0.8);
         //oInp.innerHTML = "<br>Touch moved (" + e.touches[0].clientX + "," + e.touches[0].clientY + ")";
         if(event.targetTouches.length > 1){
             return
@@ -108,18 +127,66 @@
         endPos = {x:touch.pageX,y:touch.pageY}
         // 判断出滑动方向，向右为1，向左为-1
         scrollDirection = touch.pageX-startPos.x > 0 ? 1 : -1;
-        oInp.innerHTML = "<h1>Direction: "+scrollDirection+"</h1>"
+        //oInp.innerHTML = "<h1>Direction: "+scrollDirection+"</h1>"
         if(scrollDirection == -1)
         {
-            $('.owl-carousel').trigger('next.owl.carousel');
+            $('.owl-carousel').trigger('next.owl.carousel' , [10]);
         }
         else if(scrollDirection == 1){
-           $('.owl-carousel').trigger('prev.owl.carousel', [300]);
+           $('.owl-carousel').trigger('prev.owl.carousel', [10]);
         }else {
 
         }
 
       });
+
+
+      var up = 0;
+
+      $('.card').on('touchmove' , function(event){
+
+        //$('#filmStrip').fadeTo("slow" , 0.15);
+        if(event.targetTouches.length > 1){
+            return
+        }
+        touchFast = event.targetTouches[0];
+        endPostFast = {x:touchFast.pageX,y:touchFast.pageY}
+        //scrollDirectionFast = touchFast.pageY-startPosFast.y > 20 ? 1 : -1;
+        if (touchFast.pageY-startPosFast.y > 200) {
+          //alert("yoyo")
+          if(up == 0)
+          {
+            //alert("inini")
+            //$('#filmStrip').removeAttr( 'style' );
+            //$('#filmStrip').fadeTo("fast" , 0.8);
+
+
+            up = 1;
+          }
+
+
+          clearTimeout(timeout);
+        }
+
+
+      })
+
+      //t2.reverse();
+      $('.card').on('touchend' , function(){
+        //t2.reversed(!t2.reversed());
+        clearTimeout(timeout);
+      });
+
+      $("#filmStrip").on('touchend' , function(){
+        //alert("up")
+
+        //up = 0;
+
+
+      })
+
+
+
 
       /*
       $('#owl').on('touchcancel' , function(){

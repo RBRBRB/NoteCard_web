@@ -16,7 +16,8 @@ class ContentController extends Controller
     {
         //
         $chapterPathId = 1;
-        return view('CardBoard.review' , compact('chapterPathId'));
+        $contents = Content::where('chapter_id' , $chapterPathId)->get();
+        return view('CardBoard.review' , compact('contents'));
     }
 
     /**

@@ -38,9 +38,8 @@ Route::post('add-category',['as'=>'add.category','uses'=>'CrouseController@store
 Route::post('query-category',['as'=>'query.category','uses'=>'CrouseController@query']);
 
 Route::post('review-content',['as'=>'review.content','uses'=>'ContentController@review']);
-Route::get('/review-content', function () {
-    return view('ContentController@index');
-});
+
+Route::get('review-content',array('as'=>'content.get','uses'=>'ContentController@index'));
 
 
 Route::get('/ResponsiveFullNav', function () {
